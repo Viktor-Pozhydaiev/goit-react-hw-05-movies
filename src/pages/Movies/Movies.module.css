@@ -1,0 +1,7 @@
+.movies__list {
+  text-align: center;
+  margin-top: 50px;
+}
+.movies__item {
+  color: tomato;
+}
