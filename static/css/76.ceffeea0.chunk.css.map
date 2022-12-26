@@ -1,0 +1,1 @@
+{"version":3,"file":"static/css/76.ceffeea0.chunk.css","mappings":"AAAA,iCAEE,WAAY,CADZ,WAEF","sources":["components/Cast/Cast.module.css"],"sourcesContent":[".actor__img__wrapper {\n  width: 200px;\n  height: auto;\n}\n"],"names":[],"sourceRoot":""}
