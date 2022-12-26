@@ -1,0 +1,35 @@
+.movies__detail__section {
+  text-align: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 60px;
+}
+.back__link {
+  font-size: 25px;
+  font-weight: 500;
+  color: crimson;
+}
+.movies__title__wrapper {
+  width: 500px;
+  margin: 0 auto;
+}
+.movies_link_wrapper {
+  display: flex;
+  flex-direction: column;
+
+  margin: 50px 25px;
+}
+.cast__link {
+  padding-bottom: 10px;
+}
+.cast__text {
+  margin: 0 auto;
+  font-size: 25px;
+  color: rgb(128, 74, 230);
+}
+.reviews__text {
+  margin: 0 auto;
+  font-size: 25px;
+  color: rgb(128, 74, 230);
+}

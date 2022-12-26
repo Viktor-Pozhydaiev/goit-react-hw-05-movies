@@ -1,30 +1,73 @@
 import axios from 'axios';
-import { toast } from 'react-hot-toast';
 
 const KEY = '67eb25e753339c339c2207d6264e77e1';
+const BASE_IMG_URL = 'https://image.tmdb.org/t/p/w500';
 
 axios.defaults.baseURL = `
-https://api.themoviedb.org/3/trending`;
+https://api.themoviedb.org/3/`;
 
 export const searchTrendFilms = async () => {
   try {
-    const response = await axios.get(`/all/day?api_key=${KEY}`);
-    return response.data;
+    const response = await axios.get(`trending/all/day?api_key=${KEY}`);
+    return response.data.results;
   } catch (error) {
-    toast.error('Please wait, we are repair problem');
+    console.error('Please wait, we are repair problem');
     return [];
   }
 };
-const ID_URL = 'https://api.themoviedb.org/3/search';
 
-export const searchFilmById = async query => {
+export const searchFilmByName = async query => {
   try {
     const response = await axios.get(
-      `${ID_URL}/movie?api_key=${KEY}&language=en-US&query=${query}&page=1&include_adult=false`
+      `search/movie?api_key=${KEY}&language=en-US&query=${query}&page=1&include_adult=false`
     );
-    return response.data;
-  } catch (error) {
-    toast.error('Please wait, we are repair problem');
+    return response.data.results;
+  } catch {
+    console.error('Please wait, we are repair problem');
     return [];
   }
 };
+
+export const getFilmInformation = async movieId => {
+  try {
+    const response = await axios.get(
+      `movie/${movieId}?api_key=${KEY}&language=en-US`
+    );
+    return response.data;
+  } catch {
+    console.error('Please wait, we are repair problem');
+    return [];
+  }
+};
+export function getPosterFilm(posterPath) {
+  if (posterPath) return `${BASE_IMG_URL}/${posterPath}`;
+  return 'https://www.jsconsulting.kz/assets/img/noImg.jpg';
+}
+
+export const getActors = async movieId => {
+  try {
+    const response = await axios.get(
+      `movie/${movieId}/credits?api_key=${KEY}&language=en-US`
+    );
+    return response.data.cast;
+  } catch {
+    console.error('Please wait, we are repair problem');
+  }
+};
+export const getReviews = async movieId => {
+  try {
+    const response = await axios.get(
+      `movie/${movieId}/reviews?api_key=${KEY}&language=en-US`
+    );
+
+    return response.data.results;
+  } catch {
+    console.error('Please wait, we are repair problem');
+  }
+};
+export function getDate(date) {
+  if (date) {
+    const year = date.split('-')[0];
+    return year;
+  }
+}

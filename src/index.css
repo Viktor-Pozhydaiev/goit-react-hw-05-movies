@@ -16,6 +16,19 @@ code {
 a {
   text-decoration: none;
 }
+
+ul,
 li {
   list-style: none;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
 }

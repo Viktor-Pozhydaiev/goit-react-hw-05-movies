@@ -2,7 +2,7 @@ import { Suspense } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import css from '../Header/Header.module.css';
 
-export const Header = () => {
+const Header = () => {
   return (
     <div>
       <nav className={css.nav__wrapper}>
@@ -19,3 +19,4 @@ export const Header = () => {
     </div>
   );
 };
+export default Header;

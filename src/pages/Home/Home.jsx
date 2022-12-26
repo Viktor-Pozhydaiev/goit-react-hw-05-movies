@@ -4,13 +4,13 @@ import { toast } from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import css from '../Home/Home.module.css';
 
-export const Home = () => {
-  const [trendFilms, setTrendFilms] = useState([]);
+const Home = () => {
+  const [films, setTrendFilms] = useState([]);
 
   useEffect(() => {
     async function getFilms() {
       try {
-        const { results: films } = await searchTrendFilms();
+        const films = await searchTrendFilms();
         if (films.length > 0) {
           setTrendFilms(
             films.map(film => ({
@@ -18,9 +18,6 @@ export const Home = () => {
               title: film.original_title,
               name: film.name,
             }))
-          );
-          toast.success(
-            `Congratulations, we have found ${films.length} pictures`
           );
         }
       } catch {
@@ -35,7 +32,7 @@ export const Home = () => {
     <>
       <ul className={css.home__list}>
         <h1>Trend Films</h1>
-        {trendFilms?.map(film => (
+        {films?.map(film => (
           <li key={film.id}>
             <Link to={`/movies/${film.id}`} className={css.home__item}>
               {film.title || film.name}
@@ -46,3 +43,4 @@ export const Home = () => {
     </>
   );
 };
+export default Home;
